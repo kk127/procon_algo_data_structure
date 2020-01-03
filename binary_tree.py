@@ -48,6 +48,30 @@ def get_status(node: int) -> int:
     else:
         return "internal node"
 
+def preorder(node: int) -> None:
+    if node == -1:
+        return
+    
+    print(node)
+    preorder(T[node].left)
+    preorder(T[node].right)
+
+def inorder(node: int) -> None:
+    if node == -1:
+        return
+    
+    inorder(T[node].left)
+    print(node)
+    inorder(T[node].right)
+
+def postorder(node: int) -> None:
+    if node == -1:
+        return
+    
+    postorder(T[node].left)
+    postorder(T[node].right)
+    print(node)
+
 if __name__ == "__main__":
     n = int(input())
     T = [binary_tree() for _ in range(n)]
@@ -67,3 +91,10 @@ if __name__ == "__main__":
               "depth = {:>2}, height = {:>2}, {:>13}".
               format(i, T[i].parent, get_sibling(i), get_degree(i),
                      get_depth(i), get_height(i), get_status(i)))
+
+    print("== preorder == ")
+    preorder(0)
+    print("== inorder == ")
+    inorder(0)
+    print("== postorder == ")
+    postorder(0)
